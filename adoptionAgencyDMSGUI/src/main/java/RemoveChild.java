@@ -1,15 +1,13 @@
-/* Dimitria Deveaux
- * CEN 3024 - Software Development I
- * July 10th, 2024
- * RemoveChild.java
- *  This class allows a user to remove a child by their ID number or by their name
- */
 import DBHelper.Children;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.InputMismatchException;
-
+/**
+ * RemoveChild -- The remove child class, removes a child by their first name or their ID.
+ *
+ * @author dimitriadeveaux
+ */
 public class RemoveChild {
     JFrame frame = new JFrame("Remove Child");
     private JPanel mainPanel;
@@ -20,13 +18,12 @@ public class RemoveChild {
     private JPanel removeByNamePanel;
     private JPanel removeByIdPanel;
     private JTextField childID;
-    private JButton removeIDButton;
+    private JButton removeByIdButton;
     private JPanel menuPanel;
     private JButton mainMenuButton;
     private JButton exitButton;
     private JTextField childNameTextField;
     private JButton removeByNameButton;
-
     private String databaseFilePath;
 
     public RemoveChild() {
@@ -36,41 +33,6 @@ public class RemoveChild {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        /* method: removeChildByIDButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch card panel option to allow user to remove a child by their ID
-         * */
-        removeChildByIDButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(removeByIdPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-            }
-        });
-
-        /* method: removeChildByNameButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch card panel option to allow user to remove a child by their name
-         * */
-        removeChildByNameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(removeByNamePanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-            }
-        });
-
-        /* method: mainMenuButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to return user back to the main menu
-         * */
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,11 +43,6 @@ public class RemoveChild {
             }
         });
 
-        /* method: exitButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to exit the system
-         * */
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,12 +52,41 @@ public class RemoveChild {
             }
         });
 
-        /* method: removeByID
-         * parameter: int id
-         * return: none
-         * purpose: to remove a child from the DMS by their ID number
-         * */
-        removeIDButton.addActionListener(new ActionListener() {
+        removeChildByIDButton.addActionListener(new ActionListener() {
+            /**
+             * This method switches the card panel option to remove a child by their ID.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(removeByIdPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+        removeChildByNameButton.addActionListener(new ActionListener() {
+            /**
+             * This method switches the card panel to remove a child by their first name.
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(removeByNamePanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+            }
+        });
+
+        removeByIdButton.addActionListener(new ActionListener() {
+            /**
+             * This method validates if a child is in the database based on their ID. If the child is found, they will be removed.
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
@@ -131,12 +117,13 @@ public class RemoveChild {
             }
         });
 
-        /* method: removeByName
-         * parameter: String name
-         * return: none
-         * purpose: to remove a child from DMS by their first name
-         * */
         removeByNameButton.addActionListener(new ActionListener() {
+            /**
+             * This method validates if a child is in the database based on their first name. If the child is found, they
+             * will be removed.
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{

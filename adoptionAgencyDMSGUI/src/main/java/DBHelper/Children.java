@@ -1,8 +1,11 @@
 package DBHelper;
-
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
-
+/**
+ * Children -- The Children class connects to the external database.
+ *
+ * @author dimitriadeveaux
+ */
 public class Children extends DBHelper {
 	private final String TABLE_NAME = "Children";
 	public static final String child_id = "child_id";
@@ -77,12 +80,13 @@ public class Children extends DBHelper {
 		return super.executeQueryToTable(prepareSQL(fields, whatField, whatValue, sortField, sort));
 	}
 
-	/* method: searchChildById
-	 * parameter: int childId
-	 * return: child's Id, first and last name and their adoption status
-	 * purpose: to search for a child's adoption status in the database based on the ID number
-	 * */
-	public String searchChildById(int childId) {
+	/**
+	 * This method is used to search for a child's adoption status based on their ID number
+	 *
+	 * @param childId A child's ID number
+	 * @return The child's ID, name and adoption status
+	 */
+	public String adoptionStatusChildId(int childId) {
 		String query = "SELECT * FROM Children WHERE child_id = " + childId;
 		ArrayList<ArrayList<Object>> result = executeQuery(query);
 		if (result.isEmpty()) {

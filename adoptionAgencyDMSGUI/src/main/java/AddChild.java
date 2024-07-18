@@ -1,15 +1,12 @@
-/* Dimitria Deveaux
- * CEN 3024 - Software Development I
- * July 10th, 2024
- * AddChild.java
- *  This class allows a user to add a child to the DMS by entering their child ID number, first name, last name, age, gender,
- *  birthday, allergies and interest.
- */
 import DBHelper.Children;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * AddChild -- The AddChild class adds a new child in the database based on the information provided in the fields.
+ *
+ * @author dimitriadeveaux
+ */
 public class AddChild extends Children{
     JFrame frame = new JFrame("AddChild");
     private JPanel mainPanel;
@@ -28,7 +25,6 @@ public class AddChild extends Children{
     private JLabel enterChildInformationBelowLabel;
     private JComboBox gendercomboBox;
     private JTextField lastNameTextField;
-
     private String databaseFilePath;
 
     public AddChild() {
@@ -37,15 +33,10 @@ public class AddChild extends Children{
         frame.add(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-
         initializeGenderComboBox();
         initializeAdoptionStatusBox();
 
-        /* method: mainMenuButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to return user back to the main menu
-         * */
+
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -56,11 +47,7 @@ public class AddChild extends Children{
             }
         });
 
-        /* method: exitButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to exit the system
-         * */
+
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,12 +57,12 @@ public class AddChild extends Children{
             }
         });
 
-        /* method: submitButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to allow a user to add a child to the database
-         * */
+
         submitButton.addActionListener(new ActionListener() {
+            /**
+             * This method is used to add a child to the database based on the user input in the text fields.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -108,10 +95,8 @@ public class AddChild extends Children{
         });
     }
 
-    /* method: initializeGenderComboBox
-     * parameter: none
-     * return: none
-     * purpose: to set the gender options for the dropdown box
+    /**
+     * This method is used to the set the gender option box.
      * */
     private void initializeGenderComboBox() {
         DefaultComboBoxModel<String> genderModel = new DefaultComboBoxModel<>();
@@ -120,10 +105,8 @@ public class AddChild extends Children{
         gendercomboBox.setModel(genderModel);
     }
 
-    /* method: initializeAdoptionStatusBox
-     * parameter: none
-     * return: none
-     * purpose: to set the adoption status options for the dropdown box
+    /**
+     * This method is used to set the adoption status options box.
      * */
     private void initializeAdoptionStatusBox() {
         DefaultComboBoxModel<String> adoptionStatusModel = new DefaultComboBoxModel<>();

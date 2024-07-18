@@ -1,9 +1,12 @@
 package DBHelper;
-
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
-
+/**
+ * DBHelper -- The DBHelper class connects to an external database based on the file chosen.
+ *
+ * @author dimitriadeveaux
+ */
 public class DBHelper {
 	private String DATABASE_NAME ;
 	private Connection connection;

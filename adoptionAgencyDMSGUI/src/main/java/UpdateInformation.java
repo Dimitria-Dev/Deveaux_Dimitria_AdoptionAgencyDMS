@@ -1,14 +1,13 @@
-/* Dimitria Deveaux
- * CEN 3024 - Software Development I
- * July 10th, 2024
- * UpdateInformation.java
- *  This class allows a user to update a child's allergy or interest
- */
 import DBHelper.Children;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * UpdateInformation -- The UpdateInformation class updates a child's allergy or hobby
+ *
+ * @author dimitriadeveaux
+ */
 public class UpdateInformation extends Children {
     JFrame frame = new JFrame("Update Information");
     private JPanel mainPanel;
@@ -21,19 +20,18 @@ public class UpdateInformation extends Children {
     private JTextField childIdtextField;
     private JButton searchButton;
     private JTextField childIDtextField2;
-    private JButton interestSearchButton1;
+    private JButton interestSearchButton;
     private JPanel menuPanel;
     private JButton mainMenuButton;
     private JButton exitButton;
-    private JButton exitToMainMenuButton;
-    private JButton exitToMainMenuButton1;
+    private JButton exitFromUpdateInterestButton;
+    private JButton exitFromUpdateAllergyButton;
     private JPanel allergiesUpdatePanel;
     private JTextField allergyTextField;
     private JButton updateButton;
     private JPanel updateInterest;
-    private JButton updateButton2;
+    private JButton changeInterestButton;
     private JTextField InterestTextField1;
-
     private String databaseFilePath;
 
     public UpdateInformation() {
@@ -45,13 +43,32 @@ public class UpdateInformation extends Children {
         allergiesUpdatePanel.setVisible(false);
         updateInterest.setVisible(false);
 
+        mainMenuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource() == exitFromUpdateInterestButton) {
+                    frame.dispose();
+                    Menu menu = new Menu();
+                }
+            }
+        });
 
-        /* method: updateAllergiesButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch card panel option to allow a user to update a child's allergy
-         * */
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource() == exitFromUpdateInterestButton) {
+                    frame.dispose();
+                    System.exit(0);
+                }
+            }
+        });
+
         updateAllergiesButton.addActionListener(new ActionListener() {
+            /**
+             * This method switches the card panel option to allow a child's allergy to be updated
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 parentPanel.removeAll();
@@ -61,31 +78,15 @@ public class UpdateInformation extends Children {
             }
         });
 
-        /* method: updateInterestButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch card panel option to allow a user to update a child's interest
-         * */
-        updateInterestButton.addActionListener(new ActionListener() {
+        exitFromUpdateAllergyButton.addActionListener(new ActionListener() {
+            /**
+             * This method exits to the main menu if a user is in the middle of updating an allergy.
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
-                parentPanel.removeAll();
-                parentPanel.add(updateInterestPanel);
-                parentPanel.repaint();
-                parentPanel.revalidate();
-
-            }
-        });
-
-        /* method: mainMenuButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to return user back to the main menu
-         * */
-        mainMenuButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == exitToMainMenuButton) {
+                if(e.getSource() == exitFromUpdateAllergyButton) {
                     frame.dispose();
                     Menu menu = new Menu();
                 }
@@ -93,58 +94,13 @@ public class UpdateInformation extends Children {
         });
 
 
-        /* method: exitButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to exit the system
-         * */
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == exitToMainMenuButton) {
-                    frame.dispose();
-                    System.exit(0);
-                }
-            }
-        });
-
-        /* method: exitToMainMenuButton1
-         * parameter: ActionListener
-         * return: none
-         * purpose: to exit to the main menu from the update allergy panel
-         * */
-        exitToMainMenuButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == exitToMainMenuButton1) {
-                    frame.dispose();
-                    Menu menu = new Menu();
-                }
-            }
-        });
-
-
-        /* method: exitToMainMenuButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to exit to the main menu from the update interest panel
-         * */
-        exitToMainMenuButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(e.getSource() == exitToMainMenuButton) {
-                    frame.dispose();
-                    Menu menu = new Menu();
-                }
-            }
-        });
-
-        /* method: searchButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to allow a user to update a child's allergy if their ID number is found in the systems
-         * */
         searchButton.addActionListener(new ActionListener() {
+            /**
+             * This method validates if a child is in the database based on their ID number. If the child is found, their
+             * allergy can be updated.
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == searchButton) {
@@ -171,12 +127,12 @@ public class UpdateInformation extends Children {
             }
         });
 
-        /* method: updateButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to allow a user to update a child's allergy in the system
-         * */
         updateButton.addActionListener(new ActionListener() {
+            /**
+             * This method allows a child allergy to be updated if they are in the database based on their ID.
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -206,12 +162,44 @@ public class UpdateInformation extends Children {
             }
         });
 
-        /* method: interestSearchButton1
-         * parameter: ActionListener
-         * return: none
-         * purpose: to allow a user to update a child's interest if their ID number is found in the systems
-         * */
-        interestSearchButton1.addActionListener(new ActionListener() {
+        updateInterestButton.addActionListener(new ActionListener() {
+            /**
+             * This method switches the card panel option allow  a child's interest to be updated.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parentPanel.removeAll();
+                parentPanel.add(updateInterestPanel);
+                parentPanel.repaint();
+                parentPanel.revalidate();
+
+            }
+        });
+
+        exitFromUpdateInterestButton.addActionListener(new ActionListener() {
+            /**
+             * This method exits to the main menu if a user is in the middle of updating an interest.
+             *
+             * @param e the event to be processed
+             */
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource() == exitFromUpdateInterestButton) {
+                    frame.dispose();
+                    Menu menu = new Menu();
+                }
+            }
+        });
+
+        interestSearchButton.addActionListener(new ActionListener() {
+            /**
+             * This method validates if a child is in the database based on their ID number. If the child is found, their
+             * interest can be updated.
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -235,12 +223,12 @@ public class UpdateInformation extends Children {
             }
         });
 
-        /* method: updateButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to allow a user to update a child's interest in the system
-         * */
-        updateButton2.addActionListener(new ActionListener() {
+        changeInterestButton.addActionListener(new ActionListener() {
+            /**
+             * This method allows a child's interest to be changed if they are found in the database based on their ID.
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {

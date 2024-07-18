@@ -1,15 +1,11 @@
-/* Dimitria Deveaux
- * CEN 3024 - Software Development I
- * July 10th, 2024
- * Menu.java
- *  This class holds the main menu a user will use to navigate each task
- */
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
+/**
+ * Menu -- The menu class displays options for the user to perform a task
+ *
+ * @author dimitriadeveaux
+ */
 public class Menu {
     JFrame frame = new JFrame("Menu");
     private JPanel mainPanel;
@@ -30,11 +26,6 @@ public class Menu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        /* method: addChildButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch to add a child frame
-         * */
         addChildButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,11 +37,6 @@ public class Menu {
             }
         });
 
-        /* method: addFileButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch to add file frame
-         * */
         addFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,11 +47,6 @@ public class Menu {
             }
         });
 
-        /* method: adoptionStatusButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch to the adoption status task frame
-         * */
         adoptionStatusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -76,11 +57,6 @@ public class Menu {
             }
         });
 
-        /* method: removeChildButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch to remove child frame
-         * */
         removeChildButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -91,11 +67,6 @@ public class Menu {
             }
         });
 
-        /* method: printChildrenButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch to the print children frame
-         * */
         printChildrenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,17 +74,11 @@ public class Menu {
                     AddFile addFile = new AddFile();
                     frame.dispose();
                     String databaseFilePath = AddFile.getSelectedFilePath();
-                    //String databaseFilePath = addFile.getSelectedFilePath();
                     PrintChildren printChildren = new PrintChildren(databaseFilePath);
                 }
             }
         });
 
-        /* method: updateInformationButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch to the update information frame
-         * */
         updateInformationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,11 +89,6 @@ public class Menu {
             }
         });
 
-        /* method: exitButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to exit system
-         * */
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

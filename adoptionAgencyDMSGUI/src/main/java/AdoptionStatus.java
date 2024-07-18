@@ -1,14 +1,12 @@
-/* Dimitria Deveaux
- * CEN 3024 - Software Development I
- * July 10th, 2024
- * AdoptionStatus.java
- *  This class allows a user to check the adoption status of a child and also update the adoption status of a child
- */
 import DBHelper.Children;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * AdoptionStatus -- The AdoptionStatus class allows a child's adoption status to be updated or checked.
+ *
+ * @author dimitriadeveaux
+ */
 public class AdoptionStatus extends Children{
     JFrame frame = new JFrame("AdoptionStatus");
     private JPanel mainPanel;
@@ -20,18 +18,17 @@ public class AdoptionStatus extends Children{
     private JPanel updateAdoptionStatusPanel;
     private JPanel adoptionStatusOptionsPanel;
     private JTextField checkStatusTextField;
-    private JButton cSearchButton;
+    private JButton checkStatusButton;
     private JTextField updateStatustextField1;
-    private JButton uSearchButton;
+    private JButton updateStatusSearchButton;
     private JComboBox adoptionStatusOptions;
     private JPanel menuPanel;
     private JButton mainMenuButton;
     private JButton exitButton;
     private JPanel options;
     private JComboBox adoptionStatusComboBox;
-    private JButton updateButton;
+    private JButton changeAdoptionStatusButton;
     private JButton update;
-
     private String databaseFilePath;
 
     public AdoptionStatus() {
@@ -42,12 +39,11 @@ public class AdoptionStatus extends Children{
         frame.pack();
         frame.setVisible(true);
 
-        /* method: checkAdoptionStatusButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch card panel option to allow user to check an adoption status
-         * */
         checkAdoptionStatusButton.addActionListener(new ActionListener() {
+            /**
+             * This method switches to the adoption status panel where a child's adoption status can be checked.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 parentPanel.removeAll();
@@ -57,12 +53,11 @@ public class AdoptionStatus extends Children{
             }
         });
 
-        /* method: updateAdoptionStatus
-         * parameter: ActionListener
-         * return: none
-         * purpose: to switch card panel option to allow user to update a child's adoption status
-         * */
         updateAdoptionStatusButton.addActionListener(new ActionListener() {
+            /**
+             * This method switches to the update adoption status panel where a child's adoption status can be updated.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 parentPanel.removeAll();
@@ -73,11 +68,6 @@ public class AdoptionStatus extends Children{
             }
         });
 
-        /* method: mainMenuButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to return user back to the main menu
-         * */
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,11 +78,6 @@ public class AdoptionStatus extends Children{
             }
         });
 
-        /* method: exitButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to exit system
-         * */
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -102,19 +87,19 @@ public class AdoptionStatus extends Children{
             }
         });
 
-        /* method: cSearchButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to search for a child in the DMS by their ID number to check their adoption status
-         * */
-        cSearchButton.addActionListener(new ActionListener() {
+        checkStatusButton.addActionListener(new ActionListener() {
+            /**
+             * This method validates if a child is in the database based on their ID to display their adoption status.
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
                     Children children = new Children();
                     children.setDATABASE_NAME(databaseFilePath);
                     int id = Integer.parseInt(checkStatusTextField.getText());
-                    String childIdSearch = children.searchChildById(id);
+                    String childIdSearch = children.adoptionStatusChildId(id);
 
                     if(!childIdSearch.contains(String.valueOf(id))){
                         JOptionPane.showMessageDialog(frame, "Child does not exist");
@@ -134,12 +119,11 @@ public class AdoptionStatus extends Children{
             }
         });
 
-        /* method: uSearchButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to search for a child in the DMS by their ID number to update their adoption status
-         * */
-        uSearchButton.addActionListener(new ActionListener() {
+        updateStatusSearchButton.addActionListener(new ActionListener() {
+            /**
+             * This method validates if a child is in the database based on their ID to update their adoption status.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -165,12 +149,11 @@ public class AdoptionStatus extends Children{
             }
         });
 
-        /* method: updateButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to update the child's adoption status based on the selected child ID number
-         * */
-        updateButton.addActionListener(new ActionListener() {
+        changeAdoptionStatusButton.addActionListener(new ActionListener() {
+            /**
+             * This method allows a child's adoption status to be updated if their ID number was found.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -199,11 +182,11 @@ public class AdoptionStatus extends Children{
             }
         });
     }
-    /* method: initializeAdoptionStatus
-     * parameter: String status
-     * return: none
-     * purpose: to set the options for the adoption status combo box
-     * */
+
+    /**
+     * This method is used to set the adoption status options.
+     * @param status This is the adoption status chosen
+     */
     private void initializeAdoptionStatusBox(String status) {
         DefaultComboBoxModel<String> adoptionStatusModel = new DefaultComboBoxModel<>();
         adoptionStatusModel.addElement("Available For Adoption");

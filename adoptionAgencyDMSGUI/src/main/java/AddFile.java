@@ -1,22 +1,16 @@
-/* Dimitria Deveaux
- * CEN 3024 - Software Development I
- * July 10th, 2024
- * AddFile.java
- *  This class allows a user to add a .db (database) file with the children's information to the database
- */
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-
+/**
+ * AddFile -- The AddFile class reads a .db(database) file with the children's information.
+ */
 public class AddFile {
     JFrame frame = new JFrame("Add File");
     private JPanel mainPanel;
     private JButton selectFileButton;
     private JButton mainMenuButton;
     private JButton exitButton;
-
     private static String selectedFilePath;
 
     public AddFile() {
@@ -25,12 +19,11 @@ public class AddFile {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        /* method: selectFileButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to allow a user to select a .db file and upload it to the DMS
-         * */
         selectFileButton.addActionListener(new ActionListener() {
+            /**
+             * This method reads the selected file and uploads the information to a table within the GUI if it is valid.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == selectFileButton) {
@@ -58,11 +51,6 @@ public class AddFile {
 
         });
 
-        /* method: mainMenuButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to return user back to the main menu
-         * */
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -73,11 +61,6 @@ public class AddFile {
             }
         });
 
-        /* method: exitButton
-         * parameter: ActionListener
-         * return: none
-         * purpose: to exit system
-         * */
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,12 +70,6 @@ public class AddFile {
             }
         });
     }
-
-    /* method: getSelectedFilePath
-     * parameter: none
-     * return: selectedFilePath
-     * purpose: to return the user selected file
-     * */
 
     public static String getSelectedFilePath() {
         return selectedFilePath;
