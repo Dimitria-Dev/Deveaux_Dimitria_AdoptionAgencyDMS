@@ -69,6 +69,11 @@ public class AdoptionStatus extends Children{
         });
 
         mainMenuButton.addActionListener(new ActionListener() {
+            /**
+             * This method goes to the main menu frame
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == mainMenuButton) {
@@ -79,6 +84,11 @@ public class AdoptionStatus extends Children{
         });
 
         exitButton.addActionListener(new ActionListener() {
+            /**
+             * This method exits the program
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == exitButton) {

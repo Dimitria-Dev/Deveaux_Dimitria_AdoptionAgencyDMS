@@ -32,6 +32,11 @@ public class PrintChildren extends Children {
         createTable();
 
         mainMenuButton.addActionListener(new ActionListener() {
+            /**
+             * This method goes to the main menu
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == mainMenuButton) {

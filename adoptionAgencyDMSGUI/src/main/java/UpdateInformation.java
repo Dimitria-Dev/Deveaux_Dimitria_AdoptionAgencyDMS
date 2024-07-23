@@ -44,6 +44,11 @@ public class UpdateInformation extends Children {
         updateInterest.setVisible(false);
 
         mainMenuButton.addActionListener(new ActionListener() {
+            /**
+             * This method goes back to the main menu
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == exitFromUpdateInterestButton) {
@@ -54,6 +59,11 @@ public class UpdateInformation extends Children {
         });
 
         exitButton.addActionListener(new ActionListener() {
+            /**
+             * This method exits the program
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == exitFromUpdateInterestButton) {

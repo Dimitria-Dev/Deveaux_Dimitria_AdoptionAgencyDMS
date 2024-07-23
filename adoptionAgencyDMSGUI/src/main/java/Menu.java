@@ -27,6 +27,11 @@ public class Menu {
         frame.setVisible(true);
 
         addChildButton.addActionListener(new ActionListener() {
+            /**
+             * This method takes a user to the AddChild frame
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == addChildButton) {
@@ -38,6 +43,11 @@ public class Menu {
         });
 
         addFileButton.addActionListener(new ActionListener() {
+            /**
+             * This method takes a user to the AddFile frame
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == addFileButton) {
@@ -48,6 +58,11 @@ public class Menu {
         });
 
         adoptionStatusButton.addActionListener(new ActionListener() {
+            /**
+             * This method takes a user to the AdoptionStatus frame
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == adoptionStatusButton) {
@@ -58,6 +73,11 @@ public class Menu {
         });
 
         removeChildButton.addActionListener(new ActionListener() {
+            /**
+             * This method takes a user to the RemoveChild frame
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == removeChildButton) {
@@ -68,6 +88,11 @@ public class Menu {
         });
 
         printChildrenButton.addActionListener(new ActionListener() {
+            /**
+             * This method goes to the PrintChildren frame and display all children in the database
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == printChildrenButton) {
@@ -80,6 +105,11 @@ public class Menu {
         });
 
         updateInformationButton.addActionListener(new ActionListener() {
+            /**
+             * This method takes a user to UpdateInformation frame
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == updateInformationButton) {
@@ -90,6 +120,11 @@ public class Menu {
         });
 
         exitButton.addActionListener(new ActionListener() {
+            /**
+             * This method exits the program
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == exitButton) {

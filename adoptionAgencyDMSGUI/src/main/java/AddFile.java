@@ -52,6 +52,10 @@ public class AddFile {
         });
 
         mainMenuButton.addActionListener(new ActionListener() {
+            /**
+             * This method goes to the main menu frame
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == mainMenuButton) {
@@ -62,6 +66,11 @@ public class AddFile {
         });
 
         exitButton.addActionListener(new ActionListener() {
+            /**
+             * This method exits the program
+             *
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == exitButton) {
@@ -71,6 +80,11 @@ public class AddFile {
         });
     }
 
+    /**
+     * This method returns the file a user selects
+     *
+     * @return selectedFilePath
+     */
     public static String getSelectedFilePath() {
         return selectedFilePath;
     }
